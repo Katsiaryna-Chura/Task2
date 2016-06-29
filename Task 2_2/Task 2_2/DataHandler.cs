@@ -20,13 +20,14 @@ namespace Task_2_2
             intList = new List<int>();
             doubleList = new List<double>();
             stringList = new List<string>();
+            NumberFormatInfo nfi = CultureInfo.CurrentCulture.NumberFormat;
             foreach (var listItem in list)
             {
                 if (Int32.TryParse(listItem, out i))
                 {
                     intList.Add(i);
                 }
-                else if (Double.TryParse(listItem.Replace(',', '.'), NumberStyles.Any, CultureInfo.InvariantCulture, out d))
+                else if (Double.TryParse(listItem.Replace(',', '.').Replace('.', nfi.NumberDecimalSeparator[0]), out d))
                 {
                     doubleList.Add(d);
                 }
